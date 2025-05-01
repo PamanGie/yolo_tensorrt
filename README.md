@@ -38,7 +38,7 @@ tqdm
 
 ```bash
 # Instal PyTorch dengan dukungan CUDA
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 (sesuaikan dengan versi GPU masing-masing, cek disini: --index-url https://pytorch.org/)
 
 # Instal torch-tensorrt
 pip install torch-tensorrt

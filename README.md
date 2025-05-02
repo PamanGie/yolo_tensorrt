@@ -40,7 +40,7 @@ tqdm
 
 ```bash
 # Instal PyTorch dengan dukungan CUDA
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0
 
 # Instal torch-tensorrt
 pip install torch-tensorrt
@@ -62,7 +62,7 @@ conda create -n yolo-tensorrt python=3.9
 conda activate yolo-tensorrt
 
 # Instal PyTorch dengan CUDA
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+-- Tidak Ada
 
 # Instal torch-tensorrt
 pip install torch-tensorrt

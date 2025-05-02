@@ -65,41 +65,6 @@ python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA available: {
 python -c "import torch_tensorrt; print(f'torch-tensorrt: {torch_tensorrt.__version__}')"
 ```
 
-### Conda Environment dari File (Untuk Reproduksi)
-
-Anda bisa menggunakan file environment.yml berikut untuk membuat environment yang identik:
-
-```yaml
-# environment.yml
-name: yolo-tensorrt
-channels:
-  - pytorch
-  - nvidia
-  - conda-forge
-  - defaults
-dependencies:
-  - python=3.9
-  - pip=22.3.1
-  - pytorch=2.0.1
-  - torchvision=0.15.1
-  - pytorch-cuda=11.8
-  - cudatoolkit=11.8
-  - numpy=1.24.3
-  - pip:
-    - torch-tensorrt==1.4.0
-    - ultralytics==8.0.200
-    - opencv-python==4.8.0.76
-    - matplotlib==3.7.2
-    - tqdm==4.66.1
-```
-
-Gunakan perintah berikut untuk membuat environment dari file:
-
-```bash
-conda env create -f environment.yml
-conda activate yolo-tensorrt
-```
-
 ## ✅ Verifikasi Instalasi
 
 Jalankan script berikut untuk memverifikasi bahwa TensorRT terinstal dengan benar:

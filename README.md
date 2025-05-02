@@ -52,7 +52,6 @@ pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https
 pip install torch-tensorrt
 
 # Instal Ultralytics dan library lainnya
-pip install torch-tensorrt
 pip install ultralytics opencv-python numpy matplotlib tqdm
 
 # Install ONNX

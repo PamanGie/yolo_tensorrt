@@ -55,6 +55,12 @@ pip install torch-tensorrt
 pip install torch-tensorrt
 pip install ultralytics opencv-python numpy matplotlib tqdm
 
+# Install ONNX
+pip install onnx
+pip install onnxruntime
+pip install onnxruntime-gpu
+pip install onnxsim
+
 # Verifikasi instalasi
 python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA available: {torch.cuda.is_available()}')"
 python -c "import torch_tensorrt; print(f'torch-tensorrt: {torch_tensorrt.__version__}')"

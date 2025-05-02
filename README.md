@@ -36,22 +36,6 @@ tqdm
 
 ## 🔧 Instalasi
 
-### Menggunakan pip
-
-```bash
-# Instal PyTorch dengan dukungan CUDA
-pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0
-
-# Instal torch-tensorrt
-pip install torch-tensorrt
-
-# Instal Ultralytics YOLOv8
-pip install ultralytics
-
-# Instal library lainnya
-pip install opencv-python numpy matplotlib tqdm
-```
-
 ### Menggunakan Conda (Disarankan)
 
 Conda menyediakan environment yang lebih terisolasi dan pengelolaan dependensi yang lebih baik, terutama untuk proyek yang melibatkan CUDA dan TensorRT.
@@ -62,13 +46,14 @@ conda create -n yolo-tensorrt python=3.9
 conda activate yolo-tensorrt
 
 # Instal PyTorch dengan CUDA
--- Tidak Ada
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 # Instal torch-tensorrt
 pip install torch-tensorrt
 
 # Instal Ultralytics dan library lainnya
-pip install ultralytics opencv-python matplotlib tqdm
+pip install torch-tensorrt
+pip install ultralytics opencv-python numpy matplotlib tqdm
 
 # Verifikasi instalasi
 python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA available: {torch.cuda.is_available()}')"

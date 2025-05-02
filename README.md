@@ -36,9 +36,11 @@ tqdm
 
 ## 🔧 Instalasi
 
+### Menggunakan pip
+
 ```bash
 # Instal PyTorch dengan dukungan CUDA
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 (sesuaikan dengan versi GPU masing-masing, cek disini: --index-url https://pytorch.org/)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 # Instal torch-tensorrt
 pip install torch-tensorrt
@@ -48,6 +50,64 @@ pip install ultralytics
 
 # Instal library lainnya
 pip install opencv-python numpy matplotlib tqdm
+```
+
+### Menggunakan Conda (Disarankan)
+
+Conda menyediakan environment yang lebih terisolasi dan pengelolaan dependensi yang lebih baik, terutama untuk proyek yang melibatkan CUDA dan TensorRT.
+
+```bash
+# Buat environment conda baru
+conda create -n yolo-tensorrt python=3.9
+conda activate yolo-tensorrt
+
+# Instal PyTorch dengan CUDA
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+
+# Instal torch-tensorrt
+pip install torch-tensorrt
+
+# Instal Ultralytics dan library lainnya
+pip install ultralytics opencv-python matplotlib tqdm
+
+# Verifikasi instalasi
+python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA available: {torch.cuda.is_available()}')"
+python -c "import torch_tensorrt; print(f'torch-tensorrt: {torch_tensorrt.__version__}')"
+```
+
+### Conda Environment dari File (Untuk Reproduksi)
+
+Anda bisa menggunakan file environment.yml berikut untuk membuat environment yang identik:
+
+```yaml
+# environment.yml
+name: yolo-tensorrt
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip=22.3.1
+  - pytorch=2.0.1
+  - torchvision=0.15.1
+  - pytorch-cuda=11.8
+  - cudatoolkit=11.8
+  - numpy=1.24.3
+  - pip:
+    - torch-tensorrt==1.4.0
+    - ultralytics==8.0.200
+    - opencv-python==4.8.0.76
+    - matplotlib==3.7.2
+    - tqdm==4.66.1
+```
+
+Gunakan perintah berikut untuk membuat environment dari file:
+
+```bash
+conda env create -f environment.yml
+conda activate yolo-tensorrt
 ```
 
 ## ✅ Verifikasi Instalasi
@@ -180,6 +240,32 @@ Peningkatan kecepatan rata-rata: 1.5-1.7x
 4. **Model lambat di Jetson**:
    - Export model langsung di Jetson (jangan pindahkan engine dari PC ke Jetson)
    - Gunakan parameter `workspace=4` (atau lebih rendah) saat export di Jetson
+
+5. **Masalah Conda environment**:
+   - Jika terjadi konflik, buat environment baru dengan `conda clean -a` terlebih dahulu
+   - Pastikan semua CUDA toolkit dan PyTorch menggunakan versi yang sama
+
+### Troubleshooting Conda Khusus
+
+**Masalah**: Conda tidak dapat menemukan paket torch-tensorrt  
+**Solusi**: Instal dengan pip setelah menginstal PyTorch dengan Conda
+
+**Masalah**: Konflik CUDA version  
+**Solusi**:
+```bash
+# Periksa versi CUDA yang terpasang
+nvcc --version
+
+# Pastikan PyTorch menggunakan versi CUDA yang sama
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+```
+
+**Masalah**: Kesalahan "ModuleNotFoundError" untuk torch-tensorrt  
+**Solusi**: Verifikasi instalasi dengan:
+```bash
+pip list | grep tensorrt
+pip install --force-reinstall torch-tensorrt
+```
 
 ## 🎬 Tutorial YouTube
 

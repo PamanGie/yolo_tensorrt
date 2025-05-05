@@ -83,6 +83,22 @@ if torch.cuda.is_available():
 print(f"torch-tensorrt version: {torch_tensorrt.__version__}")
 ```
 
+### Untuk Jetson 
+Untuk semua varian Jetson, karena perbedaan arsitektur antara ARM dan  maka anda harus konversi modelnya di Jetson, jangan di PC. 
+
+```bash
+# Perintah Konversi
+python -c "from ultralytics import YOLO; model = YOLO('Model/yolov8n.pt'); model.export(format='engine', device=0)"
+
+# Install PyTorch untuk JetPack 6.1 (kompatibel dengan JetPack 6.x)
+pip3 install --no-cache https://developer.download.nvidia.com/compute/redist/jp/v61/pytorch/torch-2.5.0a0+872d972e41.nv24.08.17622132-cp310-cp310-linux_aarch64.whl
+
+# Verifikasi PyTorch
+python3 -c "import torch; print('PyTorch version:', torch.__version__); print('CUDA available:', torch.cuda.is_available())"
+
+# Verifikasi torch-tensorrt
+python3 -c "import torch_tensorrt; print('Torch-TensorRT imported successfully')"
+
 ## 🛠️ Penggunaan
 
 ### Konversi Model YOLOv8 ke TensorRT

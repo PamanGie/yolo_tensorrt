@@ -99,12 +99,6 @@ python3 -c "import torch; print('PyTorch version:', torch.__version__); print('C
 # Verifikasi torch-tensorrt
 python3 -c "import torch_tensorrt; print('Torch-TensorRT imported successfully')"
 
-## 🛠️ Penggunaan
-
-### Konversi Model YOLOv8 ke TensorRT
-
-#### Metode 1: Menggunakan API Ultralytics (Disarankan)
-
 ```bash
 # Konversi langsung ke TensorRT engine
 yolo export model=yolov8n.pt format=engine half=True device=0

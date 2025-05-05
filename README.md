@@ -84,7 +84,7 @@ print(f"torch-tensorrt version: {torch_tensorrt.__version__}")
 ```
 
 ### Untuk Jetson 
-Untuk semua varian Jetson, karena perbedaan arsitektur antara ARM dan  maka anda harus konversi modelnya di Jetson, jangan di PC. 
+Untuk semua varian Jetson, karena perbedaan arsitektur antara ARM dan x86-64 maka anda harus konversi modelnya di Jetson, jangan di PC. 
 
 ```bash
 # Perintah Konversi
